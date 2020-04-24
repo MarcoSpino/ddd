@@ -1,0 +1,166 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>SmartTail - Home Page</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+        <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+
+        <script type="text/javascript"
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAj03A1f-P97gHrwkWMYPxKI-966dv87Cg&sensor=false">
+        </script>
+        <script type="text/javascript">
+        var locations = [
+            ['ESSELUNGA DI PIOLTELLO', 45.513415, 9.324238, '<a href="https://www.esselunga.it/">Esselunga.it</a>'],
+            ['loan 2', 345.512200, 9.329543, 'address 2'],
+            ['loan 3', 45.516494, 9.322910, 'address 3'],
+            ['loan 4', 45.507376, 9.324614, 'address 4'],
+            ['loan 5', 45.510560, 9.331101, 'address 5']
+        ];
+
+        function initialize() {
+
+            var myOptions = {
+                center: new google.maps.LatLng(45.513415, 9.324238),
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("default"),
+                myOptions);
+
+            setMarkers(map, locations)
+        }
+
+        function setMarkers(map, locations) {
+
+            var marker, i
+            for (i = 0; i < locations.length; i++) {
+
+                var loan = locations[i][0]
+                var lat = locations[i][1]
+                var long = locations[i][2]
+                var add = locations[i][3]
+
+                latlngset = new google.maps.LatLng(lat, long);
+
+                var marker = new google.maps.Marker({
+                    map: map, title: loan, position: latlngset
+                });
+                map.setCenter(marker.getPosition())
+
+                var content = '<h3>' + loan + '</h3> <br>' + "Address: " + add
+
+                var infowindow = new google.maps.InfoWindow()
+
+                google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+                return function() {
+                infowindow.setContent(content);
+                infowindow.open(map,marker);
+                };
+                })(marker,content,infowindow));  
+            }
+        }
+        </script>
+    </head>
+    <body onload="initialize()">
+          <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container">
+        <div class="header-container d-flex align-items-center">
+            <div class="logo mr-auto">
+            <h1 class="text-light"><a href="index.html"><span>SmartTail</span></a></h1>
+            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li class="active"><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#chisiamo">Chi Siamo</a></li>
+                <li class="get-started"><a href="#about">Get Started</a></li>
+            </ul>
+            </nav><!-- .nav-menu -->
+        </div><!-- End Header Container -->
+        </div>
+    </header><!-- End Header -->
+    
+    <div id="default" style="width:60%; height:70%; margin-left: 20%; margin-right: 20%; margin-top: 10%"></div>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+                <h3>SmarTail</h3>
+                <p>
+                Via Masaccio 4<br>
+                Cernusco Sul Naviglio, 20063 MI<br>
+                Italy <br><br>
+                <strong>Phone:</strong> +39 3420000000<br>
+                <strong>Email:</strong> info@example.com<br>
+                </p>
+            </div>
+
+            <div class="col-lg-2 col-md-6 footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Our Services</h4>
+                <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="container d-md-flex py-4">
+
+        <div class="mr-md-auto text-center text-md-left">
+            <div class="copyright">
+            &copy; Copyright <strong><span>SmarTail</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">SmarTail</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+        </div>
+    </footer><!-- End Footer -->
+    </body>
+</html>
